@@ -1,38 +1,41 @@
-package com.example.stvoreniesveta;
+package sample.demo;
 
-import com.example.stvoreniesveta.services.Functions;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import sample.demo.entity.Space;
+import sample.demo.services.Functions;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class LoginController {
-
+public class Login implements Initializable {
     @FXML
-    private TextField nameInput;
+    private TextField nameField;
     @FXML
-    private TextField passInput;
+    private PasswordField passField;
     @FXML
     private Button loginButton;
 
 
-    private String adminName = "admin";
-    private String adminPass = "password";
+    private String adminMeno = "admin";
+    private String adminHeslo = "admin";
 
 
     @FXML
     private void onClickLogin(){
+        String meno = "";
+        meno = nameField.getText();
+        String pass = "";
+        pass = passField.getText();
 
-        String name=this.nameInput.getText();
-        String pass=this.passInput.getText();
-
-        if (name.equals(adminName) && pass.equals(adminPass)) {
-            //to co sa vykona ak sa rovnaju
+        if (meno.equals(adminMeno) && pass.equals(adminHeslo)) {
             Stage stage = (Stage) loginButton.getScene().getWindow();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("space-creator-view.fxml"));
             try {
@@ -40,11 +43,13 @@ public class LoginController {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-
         } else {
             System.out.println("Zle prihlasovacie udaje");
         }
-
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
 }

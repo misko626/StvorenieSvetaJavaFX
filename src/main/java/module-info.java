@@ -1,10 +1,10 @@
-module com.example.stvoreniesveta {
+module sample.demo {
     requires javafx.controls;
     requires javafx.fxml;
 
     requires org.controlsfx.controls;
     requires org.kordamp.bootstrapfx.core;
 
-    opens com.example.stvoreniesveta to javafx.fxml;
-    exports com.example.stvoreniesveta;
+    opens sample.demo to javafx.fxml;
+    exports sample.demo;
 }
